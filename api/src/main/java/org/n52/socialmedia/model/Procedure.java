@@ -46,4 +46,14 @@ public class Procedure {
 		return identifier;
 	}
 
+	@Override
+	public String toString() {
+		return new StringBuilder()
+			.append("Procedure [name=").append(name)
+			.append(", identifier=")
+			.append(identifier).append("]").toString();
+	}
+	
+	
+
 }

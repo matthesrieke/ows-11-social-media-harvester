@@ -91,7 +91,7 @@ public class InsertObservationToSOS implements ObservationStorage {
 		
 		Map<String, String> values = new HashMap<>();
 		values.put(OBSERVATION, obs);
-		values.put(OFFERING, proc.getName());
+		values.put(OFFERING, proc.getIdentifier());
 		String requestContent = templateUtil.fillTemplate(INSERT_OBSERVATION_TEMPLATE, values);
 
 		executePost(requestContent);
@@ -125,7 +125,7 @@ public class InsertObservationToSOS implements ObservationStorage {
 
 	private void checkAndInsertSensor(Procedure proc) throws IOException {
 		Map<String, String> values = new HashMap<>();
-		values.put(OFFERING, proc.getName());
+		values.put(OFFERING, proc.getIdentifier());
 		values.put(PROCEDURE, proc.getName());
 		values.put(PROCEDURE_IDENTIFIER, proc.getIdentifier());
 		
