@@ -33,13 +33,16 @@ import java.util.List;
 public class StringUtil {
 
 	public static String removeNonAscii(String text) {
-		if (text == null) {
-			return null;
+		if (text == null || text.isEmpty() || text.equalsIgnoreCase("")) {
+			return text;
 		}
 		return text.replaceAll("[^\\x00-\\x7F]", "").trim();
 	}
 	
 	public static String escapeForXML(String text) {
+		if (text == null || text.isEmpty() || text.equalsIgnoreCase("")) {
+			return text;
+		}
 		return text.replaceAll("&", "&amp;")
 				.replaceAll("\"", "&quot;")
 				.replaceAll("'", "&apos;")
@@ -48,6 +51,9 @@ public class StringUtil {
 	}
 
 	public static String createTagList(List<String> tags, String separator) {
+		if (tags == null || tags.isEmpty()) {
+			return "tags-not-set";
+		}
 		StringBuilder sb = new StringBuilder();
 		for (String string : tags) {
 			sb.append(string);
