@@ -43,6 +43,14 @@
 			<artifactId>instagram-api</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.n52</groupId>
+			<artifactId>twitter-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.n52</groupId>
+			<artifactId>flickr-api</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 		</dependency>
@@ -84,11 +92,6 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.n52</groupId>
-			<artifactId>twitter-api</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 

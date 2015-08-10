@@ -16,9 +16,7 @@
             xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.opengis.net/sos/2.0 http://schemas.opengis.net/sos/2.0/sos.xsd
             http://www.opengis.net/samplingSpatial/2.0 http://schemas.opengis.net/samplingSpatial/2.0/spatialSamplingFeature.xsd">
             <sos:offering>${offering}</sos:offering>
-            <sos:observation>
-${observation}
-			</sos:observation>
+            <sos:observation>${observation}</sos:observation>
         </sos:InsertObservation>
     </env:Body>
 </env:Envelope>

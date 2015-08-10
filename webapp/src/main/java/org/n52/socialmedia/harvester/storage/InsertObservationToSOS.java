@@ -44,6 +44,7 @@ import org.joda.time.format.ISODateTimeFormat;
 import org.n52.socialmedia.model.HumanVisualPerceptionObservation;
 import org.n52.socialmedia.model.Location;
 import org.n52.socialmedia.model.Procedure;
+import org.n52.socialmedia.util.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -91,7 +92,7 @@ public class InsertObservationToSOS implements ObservationStorage {
 		
 		Map<String, String> values = new HashMap<>();
 		values.put(OBSERVATION, obs);
-		values.put(OFFERING, proc.getName());
+		values.put(OFFERING, proc.getIdentifier());
 		String requestContent = templateUtil.fillTemplate(INSERT_OBSERVATION_TEMPLATE, values);
 
 		executePost(requestContent);
@@ -125,7 +126,7 @@ public class InsertObservationToSOS implements ObservationStorage {
 
 	private void checkAndInsertSensor(Procedure proc) throws IOException {
 		Map<String, String> values = new HashMap<>();
-		values.put(OFFERING, proc.getName());
+		values.put(OFFERING, proc.getIdentifier());
 		values.put(PROCEDURE, proc.getName());
 		values.put(PROCEDURE_IDENTIFIER, proc.getIdentifier());
 		
@@ -142,11 +143,11 @@ public class InsertObservationToSOS implements ObservationStorage {
 		result.put(PHEN_TIME, o.getPhenomenonTime().toString(ISO_FORMAT));
 		result.put(RESULT_TIME, o.getResultTime().toString(ISO_FORMAT));
 		result.put(PROCEDURE_IDENTIFIER, o.getProcedure().getIdentifier());
-		result.put(FEATURE_DESCRIPTION, o.getLocation().getName());
+		result.put(FEATURE_DESCRIPTION, StringUtil.escapeForXML(o.getLocation().getName()));
 		result.put(FEAUTRE_IDENTIFIER, o.getLocation().getId());
-		result.put(FEATURE_NAME, o.getLocation().getName());
+		result.put(FEATURE_NAME, StringUtil.escapeForXML(o.getLocation().getName()));
 		result.put(POSITION_LON_LAT, Location.Util.toLonLatString(o.getLocation()));
-		result.put(RESULT_TEXT, o.getResult());
+		result.put(RESULT_TEXT, StringUtil.escapeForXML(o.getResult()));
 		
 		return result;
 	}
